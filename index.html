@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>prototype</title>
+<!-- <link rel="stylesheet" href="css/sample.css"> -->
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+<h1>Work Flow Record</h1>
+</header>
+<main>
+    <div class="field">
+        <div>
+            <label>業務名</label><br>
+            <input type="text" id="title"><br>    
+        </div>
+        <div>
+            <label>詳細</label><br>
+            <textarea id="flow"></textarea>
+        </div>
+    </div>
+    <ul>
+        <li>
+            <button id="save">Save</button>
+        </li>
+        <li>
+            <button id="clear">Clear</button>
+        </li>
+        <li>
+            <button id="move">保存データ一覧</button>
+        </li>
+    </ul>
+</main>
+
+<table id="list">
+<!-- ここに追加データが挿入される -->
+</table>
+
+<!-- GoogleのjQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="js/storage.js"></script>
+
+<footer><small>G's</small></footer>
+</body>
+</html>
