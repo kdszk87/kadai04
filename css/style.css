@@ -39,7 +39,7 @@ li {
 }
 
 tr {
-    margin-top: 10px;
+    margin-top: 5px;
 }
 th,td {
     width: max-content;
@@ -52,7 +52,6 @@ th,td {
 #check{
     max-width: max-content;
 }
-
 
 footer {
     margin-top: 10px;
