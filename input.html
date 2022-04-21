@@ -2,24 +2,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>prototype</title>
+<title>Workflow Record</title>
 <!-- <link rel="stylesheet" href="css/sample.css"> -->
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <header>
-<h1>Work Flow Record</h1>
+<h1>Workflow Record</h1>
 </header>
 <main>
     <div class="field">
         <div>
-            <label>業務名</label><br>
-            <input type="text" id="key"><br>    
+            <label>Title</label><br>
+            <input type="text" class= "form" id="key"><br>    
         </div>
         <div>
-            <label>詳細</label><br>
-            <textarea id="flow"></textarea>
+            <label>Explanation</label><br>
+            <textarea class= "form" id="flow"></textarea>
         </div>
     </div>
     <ul>
@@ -27,14 +27,12 @@
             <button id="save">Save</button>
         </li>
         <li>
-            <button id="clear">Clear</button>
-        </li>
-        <li>
-            <button id="move">保存データ一覧</button>
+            <button id="move">Records</button>
         </li>
     </ul>
 </main>
 
+<label id="explain"></label>
 <table id="list">
 <!-- ここに追加データが挿入される -->
 </table>
