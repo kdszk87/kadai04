@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Workflow Record</title>
+<!-- <link rel="stylesheet" href="css/sample.css"> -->
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+<h1>Workflow Record</h1>
+</header>
+<main>
+    <div class="field">
+        <div>
+            <label>Title</label><br>
+            <input type="text" class= "form" id="key"><br>    
+        </div>
+        <div>
+            <label>Explanation</label><br>
+            <textarea class= "form" id="flow"></textarea>
+        </div>
+    </div>
+    <ul>
+        <li>
+            <button id="save">Save</button>
+        </li>
+        <li>
+            <button id="move">Records</button>
+        </li>
+    </ul>
+</main>
+
+<label id="explain"></label>
+<table id="list">
+<!-- ここに追加データが挿入される -->
+</table>
+
+<!-- GoogleのjQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!--** 以下Firebase **-->
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js";
+    import {
+        getDatabase,
+        ref,
+        push,
+            set,
+            onChildAdded,
+            remove,
+            onChildRemoved,
+        } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-database.js";
+        
+        // Your web app's Firebase configuration
+        //以下はFirebaseのプロジェクトの設定から持ってくる
+        const firebaseConfig = {
+            apiKey: "AIzaSyAU8y2noM-7tbZpPA0aVOengEbRmXtgb0Q",
+            authDomain: "gs23-c4207.firebaseapp.com",
+            databaseURL: "https://gs23-c4207-default-rtdb.firebaseio.com",
+            projectId: "gs23-c4207",
+            storageBucket: "gs23-c4207.appspot.com",
+            messagingSenderId: "733346032583",
+            appId: "1:733346032583:web:b1f442233a0c6b705d87e2",
+        };
+        //googleが決めたfirebaseを使えるようにする呪文
+        const app = initializeApp(firebaseConfig);
+        //RealtimeDBに接続 
+        const db  = getDatabase(app);
+    //RealtimeDB内の"workflow"を使う(保存場所を参照する)関数(""内は自分で名前を決める)
+    const dbRef = ref(db,"workflow");
+
+    //受信処理
+    onChildAdded(dbRef, function(data){ //dataは名前。自分で決めてよし。dataの中にデータが入ってくる関数
+        const msg = data.val();
+        console.log(msg, "dataを取得");
+
+        const kagi = data.key;
+        console.log(kagi);
+        
+        let html = `
+        <div id= ></div>
+        <p>${msg.title}</p>
+        <p>${msg.flow}</p>
+        `;
+        
+        $("#output").append(html);
+    });
+
+     //saveボタンが押されたらデータを登録する
+ $("#save").on("click", function (){
+    //データを取るときはvar
+    const titleValue = $("#title").val();
+    const flowValue = $("#flow").val();
+    //入力されたものが取得できているかconsole.logで確認する癖をつける
+    console.log(titleValue, "名前");
+    console.log(flowValue, "詳細");
+    
+    //オブジェクトデータの塊を作成
+    const msg = {
+        title: titleValue,
+        flow: flowValue,
+    }
+
+    //Firebaseにデータを保存
+    const newPostRef = push(dbRef);
+    set(newPostRef, msg);
+    
+    //入力欄を空にする
+    $("#title").val("");
+    $("#flow").val("");
+    
+});
+    
+    </script>
+
+<script src="js/input.js"></script>
+
+<footer><small>G's</small></footer>
+</body>
+</html>
