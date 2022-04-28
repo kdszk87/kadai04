@@ -13,6 +13,7 @@ $(function(){
     });
 });
 
+
 $("#save").on("click", function (){
     let label = `<p>Saved the followed Record</p>`
     $("#explain").html(label);

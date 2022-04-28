@@ -10,7 +10,6 @@ $("#clear").on("click",function(){
     // alert("clear");
 });
 
-
 //クリックイベント 選択したもののみ削除→未完成
 $(function(){
     $("#delete").prop("disabled", true); // 初期状態のボタンは無効

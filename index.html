@@ -72,6 +72,7 @@
     //RealtimeDB内の"workflow"を使う(保存場所を参照する)関数(""内は自分で名前を決める)
     const dbRef = ref(db,"workflow");
 
+
     //受信処理
     onChildAdded(dbRef, function(data){ //dataは名前。自分で決めてよし。dataの中にデータが入ってくる関数
         const msg = data.val();
