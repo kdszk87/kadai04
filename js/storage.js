@@ -18,7 +18,6 @@ for(let i=0; i < localStorage.length; i++) { //←エラー「Assignment to cons
         // 画面に表示
         $("#list").append(html);
         // #listの先頭に変数htmlを追加
-        
     }
 
 
@@ -43,15 +42,27 @@ $(function(){
     $("input[type='checkbox']").on('change', function () {
         // チェックされているチェックボックスの数
         if ($(".chk:checked").length > 0) {
-            // ボタン有効
-            $("#delete").prop("disabled", false);
         } else {
-            // ボタン無効
-            $("#delete").prop("disabled", true);
         }
         // alert("delete");
     });
 });
+
+$("#delete").prop("disabled", true); // 初期状態のボタンは無効
+$("input[type='checkbox']").on('change', function () {
+    $('input[name="#check"]').prop("checked",true);
+    const count = $("#check input:checkbox:checked").length;
+    console.log(count);
+    
+    if($("#check").prop('checked')){
+        // ボタン有効
+        $("#delete").prop("disabled", false);
+    }else{
+        // ボタン無効
+        $("#delete").prop("disabled", true);        
+    }
+    });
+     
 
 //入力画面に戻る
 $("#back").on("click",function(){

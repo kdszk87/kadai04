@@ -30,7 +30,6 @@ $("#save").on("click", function (){
     $("#explain").html(label);
     //appendだと見出しもどんどん増えるので、ここはhtmlで。
 
-
     let key = $("#key").val();
     // valでkeyに入力された中身を持ってきている
     console.log(key);
@@ -57,9 +56,10 @@ $("#save").on("click", function (){
 })
     
 
-    for(let i=0; i < localStorage.length; i++) {
-    // ローカルストレージ内のデータをオブジェクトにしたい
-    let data = localStorage.key(i);
+// ローカルストレージ内のデータをオブジェクトにしたい
+    // for(let i=0; i < localStorage.length; i++) {
+    // let data = localStorage.key(i);
+   
     //オブジェクトにしたものをJSONに変換したい
     // let data_JSON = JSON.parse(data);
     // console.log(data_JSON);
@@ -67,7 +67,7 @@ $("#save").on("click", function (){
     // let data = localStorage.getItem(key);
     // let data_JSON = JSON.parse(data);
     // console.log(data_JSON);
-}
+// }
 // alert("Change");
 
 
